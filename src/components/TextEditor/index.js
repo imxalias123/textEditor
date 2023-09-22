@@ -8,7 +8,9 @@ import {
   UnorderedList,
   List,
   HorizontalLine,
-  Button,
+  Button1,
+  Button2,
+  Button3,
   Textarea,
 } from './styledComponent'
 
@@ -25,21 +27,21 @@ class TextEditor extends Component {
   }
 
   onClickBold = () => {
-    this.setState({
-      activeBold: true,
-    })
+    this.setState(prevState => ({
+      activeBold: !prevState.activeBold,
+    }))
   }
 
   onClickItalic = () => {
-    this.setState({
-      activeItalic: true,
-    })
+    this.setState(prevState => ({
+      activeItalic: !prevState.activeItalic,
+    }))
   }
 
   onClickUnderline = () => {
-    this.setState({
-      activeUnderline: true,
-    })
+    this.setState(prevState => ({
+      activeUnderline: !prevState.activeUnderline,
+    }))
   }
 
   render() {
@@ -48,23 +50,44 @@ class TextEditor extends Component {
       <EditorContainer>
         <UnorderedList>
           <List>
-            <Button type="button" onClick={this.onClickBold}>
-              <VscBold />
-            </Button>
+            <Button1
+              type="button"
+              onClick={this.onClickBold}
+              activeBold={activeBold}
+              data-testid="bold"
+            >
+              <VscBold size={25} />
+            </Button1>
           </List>
           <List>
-            <Button type="button" onClick={this.onClickItalic}>
-              <GoItalic />
-            </Button>
+            <Button2
+              type="button"
+              onClick={this.onClickItalic}
+              activeItalic={activeItalic}
+              data-testid="italic"
+            >
+              <GoItalic size={25} />
+            </Button2>
           </List>
           <List>
-            <Button type="button" onClick={this.onClickUnderline}>
-              <AiOutlineUnderline />
-            </Button>
+            <Button3
+              type="button"
+              onClick={this.onClickUnderline}
+              activeUnderline={activeUnderline}
+              data-testid="underline"
+            >
+              <AiOutlineUnderline size={25} />
+            </Button3>
           </List>
         </UnorderedList>
         <HorizontalLine />
-        <Textarea value={input} onChange={this.onChangeInput} />
+        <Textarea
+          value={input}
+          onChange={this.onChangeInput}
+          activeBold={activeBold}
+          activeItalic={activeItalic}
+          activeUnderline={activeUnderline}
+        />
       </EditorContainer>
     )
   }

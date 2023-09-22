@@ -17,9 +17,22 @@ export const List = styled.li`
 export const HorizontalLine = styled.hr`
   color: #cbd5e1;
 `
-export const Button = styled.button`
+export const Button1 = styled.button`
   background-color: transparent;
-  color: #fff;
+
+  color: ${props => (props.activeBold ? '#faff00' : '#f1f5f9')};
+  border: none;
+`
+
+export const Button2 = styled.button`
+  background-color: transparent;
+  color: ${props => (props.activeItalic ? '#faff00' : '#f1f5f9')};
+  border: none;
+`
+
+export const Button3 = styled.button`
+  background-color: transparent;
+  color: ${props => (props.activeUnderline ? '#faff00' : '#f1f5f9')};
   border: none;
 `
 export const Textarea = styled.textarea`
@@ -28,4 +41,7 @@ export const Textarea = styled.textarea`
   background-color: transparent;
   border: none;
   color: #fff;
+  font-weight: ${props => (props.activeBold ? 'bold' : 'normal')};
+  font-style: ${props => (props.activeItalic ? 'italic' : 'normal')};
+  text-decoration: ${props => (props.activeUnderline ? 'underline' : 'normal')};
 `
